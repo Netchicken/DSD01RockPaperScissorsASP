@@ -6,6 +6,12 @@
 
         public string HumanChoice { get; set; }
         public string[] HumanChoiceOptions = new[] { "Rock", "Paper", "Scissors" };
+
+        public Game(string[] humanChoiceOptions)
+        {
+            HumanChoiceOptions = humanChoiceOptions;
+        }
+
         public string Result { get; set; }
 
 

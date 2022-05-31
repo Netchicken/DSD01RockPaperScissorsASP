@@ -105,4 +105,3 @@ namespace DSD01RockPaperScissorsASP.Pages
         }
     }
 }
-}
