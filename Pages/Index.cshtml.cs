@@ -1,4 +1,4 @@
-﻿using DSD01RockPaperScissorsASP.Model;
+﻿using DSD01RockPaperScissorsASP.Operations;
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -11,7 +11,23 @@ namespace DSD01RockPaperScissorsASP.Pages
 
         //https://www.learnrazorpages.com/razor-pages/forms/radios
 
-        public Game Game { get; set; }
+        // public Game Game { get; set; }
+
+
+
+        public string HumanChoice { get; set; }
+
+        public List<string> HumanChoiceOptions;
+
+        public string Result { get; set; }
+
+        [TempData]
+        public int Win { get; set; }
+        [TempData]
+        public int Lose { get; set; }
+        [TempData]
+        public int Draw { get; set; }
+
 
 
         public void OnPost()
@@ -19,9 +35,9 @@ namespace DSD01RockPaperScissorsASP.Pages
 
             //0 represents Rock, 1 represents Paper, 2 represents Scissors 
 
-            string Human = HumanChoiceCalc(Game.HumanChoice);
+            string Human = HumanChoice;
             string Computer = ComputerChoice();
-            Game.Result = GameResult(Human, Computer);
+            Result = GameResult(Human, Computer);
 
 
 
@@ -30,21 +46,29 @@ namespace DSD01RockPaperScissorsASP.Pages
 
         private string GameResult(string human, string computer)
         {
+            string message = "You chose " + human + ". The computer chose " + computer;
 
             if (human == computer)
             {
-                return "Draw";
+                Scores.Draw++;
+                message += ". Its a Draw";
             }
 
             if (human == "Rock" && computer == "Scissors" || human == "Paper" && computer == "Rock" || human == "Scissors" && computer == "Paper")
             {
-                return "Win";
+                Scores.Win++;
+                message += ". You Win";
             }
             else
             {
-                return "Lose";
+                Scores.Lose++;
+                message += ". You Lose";
             }
 
+            ViewData["Draw"] = Scores.Draw;
+            ViewData["Win"] = Scores.Win;
+            ViewData["Lose"] = Scores.Lose;
+            return message;
         }
 
         public string ComputerChoice()
@@ -77,34 +101,18 @@ namespace DSD01RockPaperScissorsASP.Pages
         }
 
 
-        // RadioButton checkchanged displays the image when the button changes
-        private string HumanChoiceCalc(string name)
+
+
+        public IndexModel()
         {
-            if (name == "Rock")
-            {
-                //  pbHumanPic.Image = Resource1.rock;
-
-            }
-            else if (name == "Paper")
-            {
-                // pbHumanPic.Image = Resource1.paper;
-            }
-            else if (name == "Scissors")
-            {
-                //  pbHumanPic.Image = Resource1.scissors;
-
-            }
-            return name;
+            HumanChoiceOptions = new List<string>();
+            HumanChoiceOptions.Add("Rock");
+            HumanChoiceOptions.Add("Paper");
+            HumanChoiceOptions.Add("Scissors");
         }
-
-
 
         public void OnGet()
         {
-            Game.HumanChoiceOptions = new List<string>();
-            Game.HumanChoiceOptions.Add("Rock");
-            Game.HumanChoiceOptions.Add("Paper");
-            Game.HumanChoiceOptions.Add("Scissors");
 
 
         }

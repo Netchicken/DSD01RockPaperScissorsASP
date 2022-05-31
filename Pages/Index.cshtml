@@ -11,9 +11,9 @@
  <div class="card-body">
 <form method="post" >  
     <div class="form-group">  
-        @foreach (var choice in Model.Game.HumanChoiceOptions)
+        @foreach (var choice in Model.HumanChoiceOptions)
     {
-        <input type="radio" asp-for="Game.HumanChoice" value="@choice" />@choice<br />
+        <input type="radio" asp-for="HumanChoice" value="@choice" />@choice<br />
     }
         <div class="row">  
        @*     <label asp-for="Fah" class="col-lg-2"></label>  
@@ -25,13 +25,21 @@
             <input type="submit" value="Submit" asp-action="Index" />  
         </div>  
     </div>  
+
+     <label asp-for="Draw">Draw  @ViewData["Draw"]  </label>
+     <label asp-for="Win">Win @ViewData["Win"]</label>
+    <label asp-for="Lose">Lose @ViewData["Lose"]</label>
+    
+
 </form>   
 </div>
 <div class="card-footer">
 
 <div class="row">  
-            <label asp-for="Game.Result" class="col-lg-2"></label>  
-            <p>@Model.Game.Result  </p>
+            <label asp-for="Result" class="col-lg-2"></label>  
+            <p>@Model.Result  </p>
+
+           
         </div> 
 
 
