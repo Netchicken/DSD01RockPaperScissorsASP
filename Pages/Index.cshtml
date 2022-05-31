@@ -1,0 +1,40 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="card" style=" margin-top: 20px">
+  <div class="card-header">
+<h1>Paper Scissors Rock </h1>
+</div>
+ <div class="card-body">
+<form method="post" >  
+    <div class="form-group">  
+        @foreach (var choice in Model.Game.HumanChoiceOptions)
+    {
+        <input type="radio" asp-for="Game.HumanChoice" value="@choice" />@choice<br />
+    }
+        <div class="row">  
+       @*     <label asp-for="Fah" class="col-lg-2"></label>  
+            <input type="number" asp-for="Fah" class="col-lg-2" />  *@
+        </div>  
+        
+         
+        <div class="row">  
+            <input type="submit" value="Submit" asp-action="Index" />  
+        </div>  
+    </div>  
+</form>   
+</div>
+<div class="card-footer">
+
+<div class="row">  
+            <label asp-for="Answer" class="col-lg-2"></label>  
+            <p>@Model.Answer  </p>
+        </div> 
+
+
+</div>
+
+ </div>
