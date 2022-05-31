@@ -101,6 +101,11 @@ namespace DSD01RockPaperScissorsASP.Pages
 
         public void OnGet()
         {
+            Game.HumanChoiceOptions = new List<string>();
+            Game.HumanChoiceOptions.Add("Rock");
+            Game.HumanChoiceOptions.Add("Paper");
+            Game.HumanChoiceOptions.Add("Scissors");
+
 
         }
     }

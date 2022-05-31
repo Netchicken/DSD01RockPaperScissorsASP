@@ -5,12 +5,8 @@
         //https://www.learnrazorpages.com/razor-pages/forms/radios
 
         public string HumanChoice { get; set; }
-        public string[] HumanChoiceOptions = new[] { "Rock", "Paper", "Scissors" };
+        public List<string> HumanChoiceOptions;
 
-        public Game(string[] humanChoiceOptions)
-        {
-            HumanChoiceOptions = humanChoiceOptions;
-        }
 
         public string Result { get; set; }
 
