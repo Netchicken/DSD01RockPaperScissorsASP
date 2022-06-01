@@ -21,14 +21,9 @@ namespace DSD01RockPaperScissorsASP.Pages
 
         public string Result { get; set; }
 
-        [TempData]
-        public int Win { get; set; }
-        [TempData]
-        public int Lose { get; set; }
-        [TempData]
-        public int Draw { get; set; }
 
 
+        public string? Image { get; set; }
 
         public void OnPost()
         {
@@ -52,17 +47,20 @@ namespace DSD01RockPaperScissorsASP.Pages
             {
                 Scores.Draw++;
                 message += ". Its a Draw";
+                Image = "draw.gif";
             }
 
-            if (human == "Rock" && computer == "Scissors" || human == "Paper" && computer == "Rock" || human == "Scissors" && computer == "Paper")
+            else if (human == "Rock" && computer == "Scissors" || human == "Paper" && computer == "Rock" || human == "Scissors" && computer == "Paper")
             {
                 Scores.Win++;
                 message += ". You Win";
+                Image = "win.png";
             }
             else
             {
                 Scores.Lose++;
                 message += ". You Lose";
+                Image = "lose.png";
             }
 
             ViewData["Draw"] = Scores.Draw;
@@ -113,7 +111,7 @@ namespace DSD01RockPaperScissorsASP.Pages
 
         public void OnGet()
         {
-
+            Image = "psr.png";
 
         }
     }

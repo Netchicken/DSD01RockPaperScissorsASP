@@ -7,9 +7,11 @@
 <div class="card" style=" margin-top: 20px">
   <div class="card-header">
 <h1>Paper Scissors Rock </h1>
+  <img src ="~/images/@Model.Image" class="card-img-top img-fluid img-thumbnail rounded mx-auto d-block"/>  
 </div>
  <div class="card-body">
 <form method="post" >  
+
     <div class="form-group">  
         @foreach (var choice in Model.HumanChoiceOptions)
     {
@@ -26,9 +28,9 @@
         </div>  
     </div>  
 
-     <label asp-for="Draw">Draw  @ViewData["Draw"]  </label>
-     <label asp-for="Win">Win @ViewData["Win"]</label>
-    <label asp-for="Lose">Lose @ViewData["Lose"]</label>
+     <label>Draw  @ViewData["Draw"]  </label>
+     <label >Win @ViewData["Win"]</label>
+    <label >Lose @ViewData["Lose"]</label>
     
 
 </form>   
