@@ -8,35 +8,39 @@ namespace DSD01RockPaperScissorsASP.Pages
     [BindProperties]
     public class IndexModel : PageModel
     {
-
         //https://www.learnrazorpages.com/razor-pages/forms/radios
 
-        // public Game Game { get; set; }
-
-
-
+        //holds the selected choice from the radio button
         public string HumanChoice { get; set; }
+        //is the list of 3 options
 
         public List<string> HumanChoiceOptions;
-
+        //give the result as text
         public string Result { get; set; }
-
-
-
+        //shos the image
         public string? Image { get; set; }
+
+        public IndexModel()
+        {
+            HumanChoiceOptions = new List<string>();
+            HumanChoiceOptions.Add("Rock");
+            HumanChoiceOptions.Add("Paper");
+            HumanChoiceOptions.Add("Scissors");
+        }
+        public void OnGet()
+        {
+            Image = "psr.png";
+
+        }
 
         public void OnPost()
         {
-
             //0 represents Rock, 1 represents Paper, 2 represents Scissors 
-
             string Human = HumanChoice;
+            //random number 0,1,2
             string Computer = ComputerChoice();
+            //run the result method
             Result = GameResult(Human, Computer);
-
-
-
-
         }
 
         private string GameResult(string human, string computer)
@@ -101,18 +105,8 @@ namespace DSD01RockPaperScissorsASP.Pages
 
 
 
-        public IndexModel()
-        {
-            HumanChoiceOptions = new List<string>();
-            HumanChoiceOptions.Add("Rock");
-            HumanChoiceOptions.Add("Paper");
-            HumanChoiceOptions.Add("Scissors");
-        }
 
-        public void OnGet()
-        {
-            Image = "psr.png";
 
-        }
+
     }
 }

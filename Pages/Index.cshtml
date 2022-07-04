@@ -4,47 +4,42 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="card" style=" margin-top: 20px">
-  <div class="card-header">
-<h1>Paper Scissors Rock </h1>
-  <img src ="~/images/@Model.Image" class="card-img-top img-fluid img-thumbnail rounded mx-auto d-block"/>  
-</div>
- <div class="card-body">
-<form method="post" >  
+<div class="card" style=" width: 18rem; margin-top: 20px">
+    <div class="card-header">
+        <h1>Paper Scissors Rock </h1>
+        <img src="~/images/@Model.Image" class="card-img-top" />
+    </div>
+    <div class="card-body">
+        <form method="post">
 
-    <div class="form-group">  
-        @foreach (var choice in Model.HumanChoiceOptions)
-    {
-        <input type="radio" asp-for="HumanChoice" value="@choice" />@choice<br />
-    }
-        <div class="row">  
-       @*     <label asp-for="Fah" class="col-lg-2"></label>  
-            <input type="number" asp-for="Fah" class="col-lg-2" />  *@
-        </div>  
-        
-         
-        <div class="row">  
-            <input type="submit" value="Submit" asp-action="Index" />  
-        </div>  
-    </div>  
+            <div class="form-group">
+                @foreach (var item in Model.HumanChoiceOptions)
+                {
+                    <input type="radio" asp-for="HumanChoice" value="@item" />@item<br />
+                }
+               
+                <div class="row">
+                    <input type="submit" value="Submit" asp-action="Index" />
+                </div>
+            </div>
 
-     <label>Draw  @ViewData["Draw"]  </label>
-     <label >Win @ViewData["Win"]</label>
-    <label >Lose @ViewData["Lose"]</label>
-    
+            <label>Draw @ViewData["Draw"]</label>
+            <label>Win  @ViewData["Win"]</label>
+            <label>Lose @ViewData["Lose"]</label>
 
-</form>   
-</div>
-<div class="card-footer">
 
-<div class="row">  
-            <label asp-for="Result" class="col-lg-2"></label>  
+        </form>
+    </div>
+    <div class="card-footer">
+
+        <div class="row">
+            <label>Result</label>
             <p>@Model.Result  </p>
 
-           
-        </div> 
 
+        </div>
+
+
+    </div>
 
 </div>
-
- </div>
